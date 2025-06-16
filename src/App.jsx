@@ -1,13 +1,26 @@
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About.jsx";
 
-import React from 'react'
+import Skills from "./components/Skills.jsx";
+import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
 
-function App() {
+const App = () => {
   return (
-    <div className="text-center p-10">
-      <h1 className="text-4xl font-bold text-blue-600">Welcome to My Portfolio</h1>
-      <p className="mt-4 text-lg">This is a React + Vite + Tailwind starter.</p>
+    <div className="bg-[#F3EDED] min-h-screen font-sans">
+      <div className="container mx-auto p-4 flex flex-col gap-5">
+        <Navbar />
+        <Hero />
+        <About/>
+        {/* <Project/> */}
+        <Skills/>
+        <Contact/>
+        <Footer/>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
