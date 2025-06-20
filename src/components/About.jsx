@@ -34,6 +34,14 @@ const About = () => {
         <div className="text-center mt-6">
           <Logo></Logo>
           <a href="#contact"><p className="text-sm text-gray-600 cursor-pointer hover:text-purple-600 transition-colors duration-200">pauliepaveldev@gmail.com</p></a>
+          <div className="my-2">
+            <a
+              href="#contact"
+              className="mt-4 inline-flex items-center gap-2 px-6 py-2 border border-gray-500 text-gray-800 text-sm sm:text-base rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-sm"
+            >
+              <h2>Get in Touch!</h2>
+            </a>
+          </div>
         </div>
       </motion.div>
     </section>
