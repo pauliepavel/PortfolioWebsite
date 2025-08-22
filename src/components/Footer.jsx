@@ -32,10 +32,10 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-6 text-xl text-gray-600">
-          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
+          <a href="https://github.com/pauliepavel" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
+          <a href="https://www.linkedin.com/in/pavel-chroust-b39090210/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
             <FaLinkedin />
           </a>
         </div>

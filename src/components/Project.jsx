@@ -3,9 +3,9 @@ import { createPortal } from "react-dom";
 
 const projectData = [
   {
-    title: "Project Heading 1",
-    description: "Information about project - Project description",
-    longDescription: "This is a more detailed description of Project 1. It includes goals, tech stack, features, and implementation insights.",
+    title: "AirHomes – Real Estate Blog",
+    description: "BlogApp demo for showcasing web development skills.",
+    longDescription: "“This project is a template for a real estate company blog, created as part of my portfolio. It demonstrates how a blog platform can be designed for publishing articles, managing content, and presenting consulting insights. While the content is placeholder, the project highlights my ability to integrate modern frontend technologies, clean UI design, and backend functionality to simulate a real-world blogging experience.”",
     link: "https://example.com/project1",
     images: [
       "https://picsum.photos/id/1011/800/600",

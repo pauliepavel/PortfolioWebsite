@@ -17,7 +17,8 @@ const About = () => {
         {/* Circle Image */}
         <div className="w-40 h-40 rounded-full bg-gray-300 overflow-hidden shadow-md">
           <img
-            src="https://picsum.photos/200" // Random image
+            // src="https://picsum.photos/200" // Random image
+            src="public\images\image0.jpeg"
             alt="Profile"
             className="w-full h-full object-cover"
           />

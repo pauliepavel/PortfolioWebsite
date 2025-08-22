@@ -43,7 +43,7 @@ const Hero = () => {
 
         {/* Right Side */}
         <motion.div
-          className="flex-1 flex flex-col items-start text-black leading-none hidden sm:flex"
+          className="hidden sm:flex flex-1 flex-col items-start text-black leading-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
