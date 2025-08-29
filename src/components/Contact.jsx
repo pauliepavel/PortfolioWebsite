@@ -20,43 +20,89 @@ const Contact = () => {
   const isValidEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const { name, email, message } = formData;
+
+  //   if (!name || !email || !message) {
+  //     toast.error("Please fill in all fields.");
+  //     return;
+  //   }
+
+  //   if (!isValidEmail(email)) {
+  //     toast.error("Invalid email address.");
+  //     return;
+  //   }
+
+  //   setLoading(true); // Start loading
+
+  //   try {
+  //     const res = await fetch("https://formspree.io/f/xjkrrjpr", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     if (res.ok) {
+  //       toast.success("Message sent!");
+  //       setSubmitted(true);
+  //       setFormData({ name: "", email: "", message: "" });
+  //     } else {
+  //       throw new Error("Submission failed");
+  //     }
+  //   } catch (err) {
+  //     toast.error("Something went wrong.");
+  //   } finally {
+  //     setLoading(false); // Stop loading
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const { name, email, message } = formData;
+  const { name, email, message } = formData;
 
-    if (!name || !email || !message) {
-      toast.error("Please fill in all fields.");
-      return;
+  if (!name || !email || !message) {
+    toast.error("Please fill in all fields.");
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    toast.error("Invalid email address.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const formDataEncoded = new FormData();
+    formDataEncoded.append("name", name);
+    formDataEncoded.append("email", email);
+    formDataEncoded.append("message", message);
+
+    const res = await fetch("https://formspree.io/f/xjkrrjpr", {
+      method: "POST",
+      body: formDataEncoded,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (res.ok) {
+      toast.success("Message sent!");
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      throw new Error("Submission failed");
     }
+  } catch (err) {
+    toast.error("Something went wrong.");
+  } finally {
+    setLoading(false);
+  }
+};
 
-    if (!isValidEmail(email)) {
-      toast.error("Invalid email address.");
-      return;
-    }
-
-    setLoading(true); // Start loading
-
-    try {
-      const res = await fetch("https://formspree.io/f/xjkrrjpr", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        toast.success("Message sent!");
-        setSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error("Submission failed");
-      }
-    } catch (err) {
-      toast.error("Something went wrong.");
-    } finally {
-      setLoading(false); // Stop loading
-    }
-  };
 
   return (
     <section id="contact" className="bg-[#F3EDED] px-4 py-24">
