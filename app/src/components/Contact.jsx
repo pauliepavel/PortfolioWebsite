@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import emailjs from "@emailjs/browser";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
@@ -10,7 +11,7 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false); // NEW
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,99 +21,62 @@ const Contact = () => {
   const isValidEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const { name, email, message } = formData;
-
-  //   if (!name || !email || !message) {
-  //     toast.error("Please fill in all fields.");
-  //     return;
-  //   }
-
-  //   if (!isValidEmail(email)) {
-  //     toast.error("Invalid email address.");
-  //     return;
-  //   }
-
-  //   setLoading(true); // Start loading
-
-  //   try {
-  //     const res = await fetch("https://formspree.io/f/xjkrrjpr", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     if (res.ok) {
-  //       toast.success("Message sent!");
-  //       setSubmitted(true);
-  //       setFormData({ name: "", email: "", message: "" });
-  //     } else {
-  //       throw new Error("Submission failed");
-  //     }
-  //   } catch (err) {
-  //     toast.error("Something went wrong.");
-  //   } finally {
-  //     setLoading(false); // Stop loading
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const { name, email, message } = formData;
+    const { name, email, message } = formData;
 
-  if (!name || !email || !message) {
-    toast.error("Please fill in all fields.");
-    return;
-  }
-
-  if (!isValidEmail(email)) {
-    toast.error("Invalid email address.");
-    return;
-  }
-
-  setLoading(true);
-
-  try {
-    const formDataEncoded = new FormData();
-    formDataEncoded.append("name", name);
-    formDataEncoded.append("email", email);
-    formDataEncoded.append("message", message);
-
-    const res = await fetch("https://formspree.io/f/xjkrrjpr", {
-      method: "POST",
-      body: formDataEncoded,
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (res.ok) {
-      toast.success("Message sent!");
-      setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      throw new Error("Submission failed");
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
+      return;
     }
-  } catch (err) {
-    toast.error("Something went wrong.");
-  } finally {
-    setLoading(false);
-  }
-};
 
+    if (!isValidEmail(email)) {
+      toast.error("Invalid email address.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Replace with your actual EmailJS IDs
+      const serviceId = "service_u23mlwz";
+      const templateId = "template_wq93t2l";
+      const publicKey = "N9a8-U-4k9DH2A4Sv";
+
+      const res = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: name,
+          from_email: email,
+          message,
+        },
+        publicKey
+      );
+
+      if (res.status === 200) {
+        toast.success("Message sent!");
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("EmailJS submission failed");
+      }
+    } catch (err) {
+      toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="contact" className="bg-[#F3EDED] px-4 py-24">
       <div className="max-w-3xl mx-auto text-center flex flex-col gap-10">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Let’s get in touch</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          Let’s get in touch
+        </h2>
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-6 text-left"
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-left">
           <input
             type="text"
             name="name"
@@ -145,7 +109,9 @@ const Contact = () => {
             type="submit"
             disabled={loading}
             className={`self-start flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-md transition-opacity ${
-              loading ? "opacity-50 cursor-not-allowed" : "hover:bg-purple-700 hover:scale-105 hover:shadow-lg"
+              loading
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-purple-700 hover:scale-105 hover:shadow-lg"
             }`}
           >
             {loading && (
@@ -173,10 +139,16 @@ const Contact = () => {
         </form>
 
         {submitted && (
-          <p className="text-green-600 text-sm mt-2">Thank you! Your message has been sent.</p>
+          <p className="text-green-600 text-sm mt-2">
+            Thank you! Your message has been sent.
+          </p>
         )}
 
-        <ToastContainer position="bottom-center" autoClose={3000} hideProgressBar />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar
+        />
       </div>
     </section>
   );
