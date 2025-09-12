@@ -45,7 +45,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Express.js",
-    icon: <SiExpress className="text-gray-800" />,
+    icon: <SiExpress className="text-gray-800 dark:text-gray-200" />,
     description: "REST APIs, middleware, and server-side logic.",
   },
   {

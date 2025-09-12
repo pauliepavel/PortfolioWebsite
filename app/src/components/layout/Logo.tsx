@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({
   className,
 }) => {
   return (
-    <div className={`flex items-center gap-2 text-gray-700 ${className ?? ""}`}>
+    <div className={`flex items-center gap-2 text-gray-700 dark:text-gray-500 ${className ?? ""}`}>
       {/* Icon with purple background */}
       <a href={linkTo}>
         <div className="bg-purple-600 rounded-md p-1.5 flex items-center justify-center transition-transform duration-200 hover:scale-110 hover:shadow-lg hover:bg-purple-700">

@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "./Logo"; // ✅ no .jsx needed in TSX
+import Logo from "../layout/Logo";
 
 const Hero: React.FC = () => {
   const [isCinemaOpen, setIsCinemaOpen] = useState<boolean>(false);
 
   return (
-    <section className="relative w-full px-4 py-20 bg-[#F3EDED]" id="home">
-      {/* Background Blur Flair */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="absolute w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse -top-10 -left-10" />
-        <div className="absolute w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse top-20 -right-10" />
-      </div>
-
+    <section className="relative w-full px-4 py-20 bg-[#F3EDED] dark:bg-gray-900" id="home">
       <motion.div
         className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10"
         initial={{ opacity: 0, y: 30 }}
@@ -25,7 +19,7 @@ const Hero: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05, y: -5 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="w-64 h-64 sm:w-80 sm:h-80 bg-gray-300 rounded-xl shadow-md overflow-hidden cursor-pointer"
+            className="w-64 h-64 sm:w-80 sm:h-80 bg-gray-300 dark:bg-gray-700 rounded-xl shadow-md overflow-hidden cursor-pointer"
             onClick={() => setIsCinemaOpen(true)}
           >
             <img
@@ -43,7 +37,7 @@ const Hero: React.FC = () => {
 
         {/* Right Side */}
         <motion.div
-          className="hidden sm:flex flex-1 flex-col items-start text-black leading-none"
+          className="hidden sm:flex flex-1 flex-col items-start text-black dark:text-gray-200 leading-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -64,16 +58,16 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 my-4">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 my-4">
           Hey, I'm Pavel
         </h1>
-        <p className="text-lg sm:text-xl text-gray-700 mb-6">
+        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-6">
           A front-end developer passionate about crafting clean, responsive user
           interfaces with React & Tailwind.
         </p>
         <a
           href="#projects"
-          className="inline-block px-6 py-2 rounded-full border border-gray-800 text-gray-800 hover:bg-purple-600 hover:text-white transition duration-300"
+          className="inline-block px-6 py-2 rounded-full border border-gray-800 dark:border-gray-200 text-gray-800 dark:text-gray-200 hover:bg-purple-600 hover:text-white transition duration-300"
         >
           View My Work
         </a>

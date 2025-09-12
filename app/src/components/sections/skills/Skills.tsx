@@ -4,7 +4,7 @@ import { skills } from "./SkillsData";
 const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-16">
-      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200">
         Skills
       </h2>
 
@@ -23,7 +23,7 @@ const Skills: React.FC = () => {
             <div
               className="absolute top-[110%] sm:bottom-[-130%] sm:top-auto 
                          w-64 max-w-xs px-4 py-3 rounded-md shadow-lg 
-                         backdrop-blur-md bg-white/80 text-gray-800 
+                         backdrop-blur-md bg-white/80 dark:bg-gray-900 text-gray-800 dark:text-gray-200
                          opacity-0 group-hover:opacity-100 pointer-events-none 
                          transition-all duration-300 transform translate-y-2 
                          group-hover:translate-y-0 text-sm text-center z-10"

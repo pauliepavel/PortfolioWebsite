@@ -47,7 +47,6 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
-      // Replace with your actual EmailJS IDs
       const serviceId = "service_u23mlwz";
       const templateId = "template_wq93t2l";
       const publicKey = "N9a8-U-4k9DH2A4Sv";
@@ -78,9 +77,12 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#F3EDED] px-4 py-24">
+    <section
+      id="contact"
+      className="bg-[#F3EDED] dark:bg-gray-900 px-4 py-24 transition-colors"
+    >
       <div className="max-w-3xl mx-auto text-center flex flex-col gap-10">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-3xl font-bold mb-12 text-gray-800 dark:text-white">
           Let’s get in touch
         </h2>
 
@@ -91,7 +93,12 @@ const Contact: React.FC = () => {
             placeholder="Your name"
             value={formData.name}
             onChange={handleChange}
-            className="bg-transparent outline-none border-b border-dotted border-gray-400 focus:border-black transition-all py-2 placeholder-gray-500"
+            aria-label="Your name"
+            className="bg-transparent outline-none border-b border-dotted 
+                       border-gray-400 dark:border-gray-600 
+                       focus:border-black dark:focus:border-white 
+                       transition-all py-2 placeholder-gray-500 
+                       dark:placeholder-gray-400 text-gray-900 dark:text-gray-100"
             disabled={loading}
           />
           <input
@@ -100,7 +107,12 @@ const Contact: React.FC = () => {
             placeholder="Your email"
             value={formData.email}
             onChange={handleChange}
-            className="bg-transparent outline-none border-b border-dotted border-gray-400 focus:border-black transition-all py-2 placeholder-gray-500"
+            aria-label="Your email"
+            className="bg-transparent outline-none border-b border-dotted 
+                       border-gray-400 dark:border-gray-600 
+                       focus:border-black dark:focus:border-white 
+                       transition-all py-2 placeholder-gray-500 
+                       dark:placeholder-gray-400 text-gray-900 dark:text-gray-100"
             disabled={loading}
           />
           <textarea
@@ -109,18 +121,25 @@ const Contact: React.FC = () => {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className="bg-transparent outline-none border-b border-dotted border-gray-400 focus:border-black transition-all py-2 placeholder-gray-500 resize-none"
+            aria-label="Your message"
+            className="bg-transparent outline-none border-b border-dotted 
+                       border-gray-400 dark:border-gray-600 
+                       focus:border-black dark:focus:border-white 
+                       transition-all py-2 placeholder-gray-500 
+                       dark:placeholder-gray-400 text-gray-900 dark:text-gray-100 resize-none"
             disabled={loading}
           />
 
           <button
             type="submit"
             disabled={loading}
-            className={`self-start flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-md transition-opacity ${
-              loading
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-purple-700 hover:scale-105 hover:shadow-lg"
-            }`}
+            className={`self-start flex items-center gap-2 
+                        bg-purple-600 text-white px-6 py-2 rounded-md 
+                        transition-all duration-300
+                        ${loading
+                          ? "opacity-50 cursor-not-allowed"
+                          : "hover:bg-purple-700 hover:scale-105 hover:shadow-lg"
+                        }`}
           >
             {loading && (
               <svg
@@ -147,7 +166,10 @@ const Contact: React.FC = () => {
         </form>
 
         {submitted && (
-          <p className="text-green-600 text-sm mt-2">
+          <p
+            className="text-green-600 dark:text-green-400 text-sm mt-2"
+            role="alert"
+          >
             Thank you! Your message has been sent.
           </p>
         )}
@@ -156,6 +178,7 @@ const Contact: React.FC = () => {
           position="bottom-center"
           autoClose={3000}
           hideProgressBar
+          theme="dark"
         />
       </div>
     </section>

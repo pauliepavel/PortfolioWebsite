@@ -61,7 +61,56 @@ const projectData: ProjectData[] = [
     ],
     tags: ["Figma", "UX", "Git"],
   },
+  {
+    id: "project5",
+    title: "Project Heading 5",
+    description: "Information about project - Project description",
+    longDescription: "This is a more detailed description of Project 5.",
+    link: "https://example.com/project5",
+    images: [
+      "https://picsum.photos/id/1020/800/600",
+      "https://picsum.photos/id/1021/800/600",
+    ],
+    tags: ["React", "GraphQL", "Tailwind"],
+  },
+  {
+    id: "project6",
+    title: "Project Heading 6",
+    description: "Information about project - Project description",
+    longDescription: "This is a more detailed description of Project 6.",
+    link: "https://example.com/project6",
+    images: [
+      "https://picsum.photos/id/1022/800/600",
+      "https://picsum.photos/id/1023/800/600",
+    ],
+    tags: ["TypeScript", "Redux", "API"],
+  },
+  {
+    id: "project7",
+    title: "Project Heading 7",
+    description: "Information about project - Project description",
+    longDescription: "This is a more detailed description of Project 7.",
+    link: "https://example.com/project7",
+    images: [
+      "https://picsum.photos/id/1024/800/600",
+      "https://picsum.photos/id/1025/800/600",
+    ],
+    tags: ["Vue", "Vuex", "Tailwind"],
+  },
+  {
+    id: "project8",
+    title: "Project Heading 8",
+    description: "Information about project - Project description",
+    longDescription: "This is a more detailed description of Project 8.",
+    link: "https://example.com/project8",
+    images: [
+      "https://picsum.photos/id/1026/800/600",
+      "https://picsum.photos/id/1027/800/600",
+    ],
+    tags: ["React Native", "Mobile App", "Firebase"],
+  },
 ];
+
 
 // ----------------------
 // Modal Component
@@ -74,7 +123,6 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Lock scroll
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -82,7 +130,6 @@ const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
     };
   }, []);
 
-  // Escape key closes modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -99,32 +146,33 @@ const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
       aria-labelledby="project-title"
       ref={modalRef}
     >
-      <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative focus:outline-none">
+      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative focus:outline-none">
         <button
-          className="absolute top-3 right-3 text-xl text-gray-700 hover:text-black focus:outline-none"
+          className="absolute top-3 right-3 text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white focus:outline-none"
           onClick={onClose}
           aria-label="Close modal"
         >
           &times;
         </button>
 
-        <h2 id="project-title" className="text-2xl font-bold mb-2">
+        <h2
+          id="project-title"
+          className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100"
+        >
           {project.title}
         </h2>
 
-        {/* Tags */}
         <div className="flex gap-2 flex-wrap mb-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 text-xs rounded bg-purple-100 text-purple-700"
+              className="px-2 py-1 text-xs rounded bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Images */}
         <div className="mb-4 space-y-2">
           {project.images.map((img, i) => (
             <img
@@ -136,10 +184,10 @@ const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
           ))}
         </div>
 
-        {/* Description */}
-        <p className="text-gray-700 mb-4">{project.longDescription}</p>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          {project.longDescription}
+        </p>
 
-        {/* Link */}
         <a
           href={project.link}
           target="_blank"
@@ -169,7 +217,7 @@ const Project: React.FC = () => {
           <button
             key={project.id}
             onClick={() => setSelectedProject(project)}
-            className="w-full max-w-xs bg-white rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 text-left focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full max-w-xs bg-white dark:bg-gray-800 rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 text-left focus:outline-none focus:ring-2 focus:ring-purple-500"
             aria-label={`Open details for ${project.title}`}
           >
             <div className="block rounded-md overflow-hidden group">
@@ -183,8 +231,12 @@ const Project: React.FC = () => {
               </div>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-              <p className="text-sm text-gray-600">{project.description}</p>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                {project.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {project.description}
+              </p>
             </div>
           </button>
         ))}
