@@ -1,57 +1,80 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-const projectData = [
+interface ProjectData {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  link: string;
+  images: string[];
+  tags: string[];
+}
+
+const projectData: ProjectData[] = [
   {
+    id: "airhomes",
     title: "AirHomes – Real Estate Blog",
     description: "BlogApp demo for showcasing web development skills.",
-    longDescription: "“This project is a template for a real estate company blog, created as part of my portfolio. It demonstrates how a blog platform can be designed for publishing articles, managing content, and presenting consulting insights. While the content is placeholder, the project highlights my ability to integrate modern frontend technologies, clean UI design, and backend functionality to simulate a real-world blogging experience.”",
+    longDescription:
+      "This project is a template for a real estate company blog, created as part of my portfolio. It demonstrates how a blog platform can be designed for publishing articles, managing content, and presenting consulting insights. While the content is placeholder, the project highlights my ability to integrate modern frontend technologies, clean UI design, and backend functionality to simulate a real-world blogging experience.",
     link: "https://example.com/project1",
     images: [
       "https://picsum.photos/id/1011/800/600",
-      "https://picsum.photos/id/1012/800/600"
+      "https://picsum.photos/id/1012/800/600",
     ],
-    tags: ["React", "Tailwind", "API"]
+    tags: ["React", "Tailwind", "API"],
   },
   {
+    id: "project2",
     title: "Project Heading 2",
     description: "Information about project - Project description",
     longDescription: "This is a more detailed description of Project 2.",
     link: "https://example.com/project2",
     images: [
       "https://picsum.photos/id/1013/800/600",
-      "https://picsum.photos/id/1014/800/600"
+      "https://picsum.photos/id/1014/800/600",
     ],
-    tags: ["Next.js", "Sass", "CMS"]
+    tags: ["Next.js", "Sass", "CMS"],
   },
   {
+    id: "project3",
     title: "Project Heading 3",
     description: "Information about project - Project description",
     longDescription: "This is a more detailed description of Project 3.",
     link: "https://example.com/project3",
     images: [
       "https://picsum.photos/id/1015/800/600",
-      "https://picsum.photos/id/1016/800/600"
+      "https://picsum.photos/id/1016/800/600",
     ],
-    tags: ["JavaScript", "REST API", "Firebase"]
+    tags: ["JavaScript", "REST API", "Firebase"],
   },
   {
+    id: "project4",
     title: "Project Heading 4",
     description: "Information about project - Project description",
     longDescription: "This is a more detailed description of Project 4.",
     link: "https://example.com/project4",
     images: [
       "https://picsum.photos/id/1018/800/600",
-      "https://picsum.photos/id/1019/800/600"
+      "https://picsum.photos/id/1019/800/600",
     ],
-    tags: ["Figma", "UX", "Git"]
+    tags: ["Figma", "UX", "Git"],
   },
 ];
 
-const Modal = ({ project, onClose }) => {
-  const modalRef = useRef();
+// ----------------------
+// Modal Component
+// ----------------------
+interface ModalProps {
+  project: ProjectData;
+  onClose: () => void;
+}
 
-  // Lock scrolling when modal is open
+const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Lock scroll
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -59,12 +82,10 @@ const Modal = ({ project, onClose }) => {
     };
   }, []);
 
-  // Handle escape key
+  // Escape key closes modal
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
@@ -91,10 +112,11 @@ const Modal = ({ project, onClose }) => {
           {project.title}
         </h2>
 
+        {/* Tags */}
         <div className="flex gap-2 flex-wrap mb-4">
-          {project.tags.map((tag, i) => (
+          {project.tags.map((tag) => (
             <span
-              key={i}
+              key={tag}
               className="px-2 py-1 text-xs rounded bg-purple-100 text-purple-700"
             >
               {tag}
@@ -102,10 +124,11 @@ const Modal = ({ project, onClose }) => {
           ))}
         </div>
 
+        {/* Images */}
         <div className="mb-4 space-y-2">
           {project.images.map((img, i) => (
             <img
-              key={i}
+              key={img}
               src={img}
               alt={`${project.title} screenshot ${i + 1}`}
               className="rounded w-full object-contain"
@@ -113,8 +136,10 @@ const Modal = ({ project, onClose }) => {
           ))}
         </div>
 
+        {/* Description */}
         <p className="text-gray-700 mb-4">{project.longDescription}</p>
 
+        {/* Link */}
         <a
           href={project.link}
           target="_blank"
@@ -129,15 +154,20 @@ const Modal = ({ project, onClose }) => {
   );
 };
 
-const Project = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+// ----------------------
+// Project Grid Component
+// ----------------------
+const Project: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(
+    null
+  );
 
   return (
-    <div className="px-4 py-8" id="projects">
+    <section className="px-4 py-8" id="projects">
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
-        {projectData.map((project, index) => (
+        {projectData.map((project) => (
           <button
-            key={index}
+            key={project.id}
             onClick={() => setSelectedProject(project)}
             className="w-full max-w-xs bg-white rounded-md shadow-md hover:shadow-xl transition-shadow duration-300 text-left focus:outline-none focus:ring-2 focus:ring-purple-500"
             aria-label={`Open details for ${project.title}`}
@@ -153,7 +183,7 @@ const Project = () => {
               </div>
             </div>
             <div className="p-4">
-              <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
+              <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
               <p className="text-sm text-gray-600">{project.description}</p>
             </div>
           </button>
@@ -161,12 +191,9 @@ const Project = () => {
       </div>
 
       {selectedProject && (
-        <Modal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        <Modal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
-    </div>
+    </section>
   );
 };
 

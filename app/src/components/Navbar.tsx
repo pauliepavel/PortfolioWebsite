@@ -1,10 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavLink {
+  label: string;
+  href: string;
+}
 
-  const navLinks = [
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const navLinks: NavLink[] = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Project", href: "#projects" },
@@ -14,8 +19,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-[#F3EDED] pt-3">
-      <div className="max-w-6xl mx-auto px-4 pt-6  flex justify-center items-center">
-
+      <div className="max-w-6xl mx-auto px-4 pt-6 flex justify-center items-center">
         {/* Toggle Button (Mobile) */}
         <button
           className="md:hidden text-2xl text-gray-800"

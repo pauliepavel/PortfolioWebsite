@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "./Logo.jsx";
+import Logo from "./Logo"; // ✅ no .jsx needed in TSX
 
-const Hero = () => {
-  const [isCinemaOpen, setIsCinemaOpen] = useState(false);
+const Hero: React.FC = () => {
+  const [isCinemaOpen, setIsCinemaOpen] = useState<boolean>(false);
 
   return (
     <section className="relative w-full px-4 py-20 bg-[#F3EDED]" id="home">
@@ -48,8 +48,12 @@ const Hero = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="text-[70px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium">P</div>
-          <div className="text-[70px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium">Ch</div>
+          <div className="text-[70px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium">
+            P
+          </div>
+          <div className="text-[70px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium">
+            Ch
+          </div>
         </motion.div>
       </motion.div>
 
@@ -64,7 +68,8 @@ const Hero = () => {
           Hey, I'm Pavel
         </h1>
         <p className="text-lg sm:text-xl text-gray-700 mb-6">
-          A front-end developer passionate about crafting clean, responsive user interfaces with React & Tailwind.
+          A front-end developer passionate about crafting clean, responsive user
+          interfaces with React & Tailwind.
         </p>
         <a
           href="#projects"

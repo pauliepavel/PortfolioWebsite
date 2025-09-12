@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./components/navbar.jsx";
-import Hero from "./components/Hero";
+import Navbar from "./components/Navbar.js";
+import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 
-import Project from "./components/Project.jsx";
-import Skills from "./components/Skills.jsx";
+import Project from "./components/Project.js";
+import Skills from "./components/skills/Skills.js";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 

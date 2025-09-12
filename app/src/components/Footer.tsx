@@ -1,7 +1,13 @@
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import React from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const Footer = () => {
-  const navLinks = [
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const Footer: React.FC = () => {
+  const navLinks: NavLink[] = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
@@ -9,7 +15,7 @@ const Footer = () => {
     { label: "Contact", href: "#contact" },
   ];
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -32,10 +38,20 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-6 text-xl text-gray-600">
-          <a href="https://github.com/pauliepavel" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
+          <a
+            href="https://github.com/pauliepavel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-purple-600"
+          >
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/pavel-chroust-b39090210/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600">
+          <a
+            href="https://www.linkedin.com/in/pavel-chroust-b39090210/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-purple-600"
+          >
             <FaLinkedin />
           </a>
         </div>
@@ -50,13 +66,13 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <p className=" flex justify-center gap-1 text-center text-sm text-gray-500 mt-10">
-        &copy; {new Date().getFullYear()} 
+      <p className="flex justify-center gap-1 text-center text-sm text-gray-500 mt-10">
+        &copy; {new Date().getFullYear()}
         <a href="#contact">
-          <div className="cursor-pointer hover:text-purple-600 transition-colors duration-200">
+          <span className="cursor-pointer hover:text-purple-600 transition-colors duration-200">
             pauliepavel
-          </div>
-        </a> 
+          </span>
+        </a>
         All rights reserved.
       </p>
     </footer>
