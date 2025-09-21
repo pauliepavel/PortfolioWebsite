@@ -10,7 +10,7 @@ import Contact from "./components/sections/Contact.js"
 
 const App = () => {
   return (
-    <div className="bg-[#F3EDED] dark:bg-gray-900 min-h-screen font-sans">
+    <div className="bg-gradient-to-t from-[#ebddf3] via-[#F3EDED] to-[#F3EDED] dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div className="container mx-auto p-4 flex flex-col gap-5">
         <Navbar />
         <Hero />

@@ -5,7 +5,7 @@ import Logo from "../layout/Logo.js";
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#F3EDED] dark:bg-gray-900 px-4 py-20">
+    <section id="about" className="px-4 py-20">
       <motion.div
         className="max-w-4xl mx-auto text-center flex flex-col items-center gap-10"
         initial={{ opacity: 0, y: 50 }}

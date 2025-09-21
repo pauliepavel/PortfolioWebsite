@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   const [isCinemaOpen, setIsCinemaOpen] = useState<boolean>(false);
 
   return (
-    <section className="relative w-full px-4 py-20 bg-[#F3EDED] dark:bg-gray-900" id="home">
+    <section className="relative w-full px-4 py-20" id="home">
       <motion.div
         className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10"
         initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
 
         {/* Right Side */}
         <motion.div
-          className="hidden sm:flex flex-1 flex-col items-start text-black dark:text-gray-200 leading-none"
+          className="hidden sm:flex flex-1 flex-col items-start text-gray-800 dark:text-gray-200 leading-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 my-4">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 dark:text-gray-100 my-4">
           Hey, I'm Pavel
         </h1>
         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-6">
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center z-50"
             onClick={() => setIsCinemaOpen(false)}
           >
             <motion.img

@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#F3EDED] dark:bg-gray-900 text-gray-800 dark:text-gray-300 py-8 px-4 transition-colors">
+    <footer className="w-full text-gray-900 dark:text-gray-300 py-8 px-4 transition-colors">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
         {/* Navigation Links */}
         <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-16 text-base font-medium items-center">
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
         </ul>
 
         {/* Social Icons */}
-        <div className="flex space-x-6 text-xl text-gray-600 dark:text-gray-400">
+        <div className="flex space-x-6 text-xl text-gray-500 dark:text-gray-400">
           <a
             href="https://github.com/pauliepavel"
             target="_blank"

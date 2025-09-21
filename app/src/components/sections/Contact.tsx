@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="bg-[#F3EDED] dark:bg-gray-900 px-4 py-24 transition-colors"
+      className="px-4 py-24 transition-colors"
     >
       <div className="max-w-3xl mx-auto text-center flex flex-col gap-10">
         <h2 className="text-3xl font-bold mb-12 text-gray-800 dark:text-white">

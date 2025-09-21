@@ -19,11 +19,11 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#F3EDED] dark:bg-gray-900 pt-3">
+    <nav className="w-full pt-3">
       <div className="max-w-6xl mx-auto px-4 pt-6 flex justify-center items-center">
         {/* Toggle Button (Mobile) */}
         <button
-          className="md:hidden text-2xl text-gray-800 dark:text-gray-200"
+          className="md:hidden text-2xl text-gray-900 dark:text-gray-200"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation"
         >
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#F3EDED] dark:bg-gray-900 pt-6">
+        <div className="md:hidden pt-6">
           <ul className="flex flex-col space-y-4 text-gray-800 dark:text-gray-200 text-base font-medium items-center">
             {navLinks.map(({ label, href }) => (
               <li key={label}>

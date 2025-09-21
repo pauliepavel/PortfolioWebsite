@@ -111,7 +111,6 @@ const projectData: ProjectData[] = [
   },
 ];
 
-
 // ----------------------
 // Modal Component
 // ----------------------
@@ -138,15 +137,25 @@ const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  // ✅ Close when clicking outside of modal
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      onClose();
+    }
+  };
+
   return createPortal(
     <div
       className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-title"
-      ref={modalRef}
+      onClick={handleOutsideClick} // listen on backdrop
     >
-      <div className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative focus:outline-none">
+      <div
+        ref={modalRef}
+        className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative focus:outline-none"
+      >
         <button
           className="absolute top-3 right-3 text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white focus:outline-none"
           onClick={onClose}
@@ -157,7 +166,7 @@ const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
 
         <h2
           id="project-title"
-          className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100"
+          className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100"
         >
           {project.title}
         </h2>
@@ -243,7 +252,10 @@ const Project: React.FC = () => {
       </div>
 
       {selectedProject && (
-        <Modal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        <Modal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       )}
     </section>
   );
