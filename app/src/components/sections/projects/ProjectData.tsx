@@ -15,7 +15,7 @@ export const ProjectData: ProjectData[] = [
     description: "BlogApp demo for showcasing web development skills.",
     longDescription:
       "This project is a template for a real estate company blog, created as part of my portfolio. It demonstrates how a blog platform can be designed for publishing articles, managing content, and presenting consulting insights. While the content is placeholder, the project highlights my ability to integrate modern frontend technologies, clean UI design, and backend functionality to simulate a real-world blogging experience.",
-    link: "https://example.com/project1",
+    link: "https://my-blog-sage-one.vercel.app/",
     images: [
       "/images/Snímek obrazovky (81).png",
       "/images/Snímek obrazovky (82).png",
