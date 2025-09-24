@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "./components/layout/Navbar.js";
-import Hero from "./components/sections/Hero.jsx";
-import About from "./components/sections/About.jsx";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
 
-import Project from "./components/sections/projects/Project.js";
-import Skills from "./components/sections/skills/Skills.js";
-import Footer from "./components/layout/Footer.js";
-import Contact from "./components/sections/Contact.js"
+import Project from "./components/sections/projects/ProjectGrid";
+import Skills from "./components/sections/skills/Skills";
+import Footer from "./components/layout/Footer";
+import Contact from "./components/sections/Contact"
 
 const App = () => {
   return (
