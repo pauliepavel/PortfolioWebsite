@@ -16,7 +16,7 @@ const About = () => {
         {/* Circle Image */}
         <div className="w-40 h-40 rounded-full bg-gray-300 dark:bg-gray-700 overflow-hidden shadow-md">
           <img
-            src="public/images/image0.jpeg"
+            src="/images/image0.jpeg"
             alt="Profile"
             className="w-full h-full object-cover"
           />
